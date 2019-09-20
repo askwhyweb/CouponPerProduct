@@ -174,7 +174,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
      */
     public function canShowTab()
     {
-        return false;
+        return true;
     }
 
     /**

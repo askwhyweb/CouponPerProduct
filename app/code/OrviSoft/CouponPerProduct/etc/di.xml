@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
 	<!-- We override it to apply the Amasty_Promo rules even after apply the coupon code -->
-    <preference for="\Magento\SalesRule\Model\Validator" type="\OrviSoft\CouponPerProduct\Rewrite\SalesRule\Model\Validator" />
+    <!--<preference for="\Magento\SalesRule\Model\Validator" type="\OrviSoft\CouponPerProduct\Rewrite\SalesRule\Model\Validator" />-->
 </config>
