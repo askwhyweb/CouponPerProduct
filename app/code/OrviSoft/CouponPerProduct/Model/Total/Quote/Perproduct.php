@@ -10,14 +10,17 @@ class Perproduct extends \Magento\Quote\Model\Quote\Address\Total\AbstractTotal
     * @var \Magento\Framework\Pricing\PriceCurrencyInterface
     */
    protected $_priceCurrency;
+   protected $_helper;
    /**
     * Custom constructor.
     * @param \Magento\Framework\Pricing\PriceCurrencyInterface $priceCurrency
     */
    public function __construct(
-       \Magento\Framework\Pricing\PriceCurrencyInterface $priceCurrency
+       \Magento\Framework\Pricing\PriceCurrencyInterface $priceCurrency,
+       \OrviSoft\CouponPerProduct\Helper\Data $helper
    ){
        $this->_priceCurrency = $priceCurrency;
+       $this->_helper = $helper;
    }
    /**
     * @param \Magento\Quote\Model\Quote $quote
@@ -32,14 +35,25 @@ class Perproduct extends \Magento\Quote\Model\Quote\Address\Total\AbstractTotal
    )
    {
        parent::collect($quote, $shippingAssignment, $total);
-           $baseDiscount = 10;
+       $discount = $this->_helper->getSessionValues();
+       $applyDiscount = false;
+       if(is_array($discount)){
+            $coupon = $this->_helper->getCouponCode();
+            $validated = $this->helper->validateCoupon($coupon);
+            if(is_array($validated)){
+                $applyDiscount = true;
+            }
+       }
+       if($applyDiscount){
+           $baseDiscount = $validated['discount_amount'];
            $discount =  $this->_priceCurrency->convert($baseDiscount);
            $total->addTotalAmount('perproductdiscount', -$discount);
            $total->addBaseTotalAmount('perproductdiscount', -$baseDiscount);
            $total->setBaseGrandTotal($total->getBaseGrandTotal() - $baseDiscount);
+           $total->setDiscountAmount($discount);
            $quote->setPerproductDiscount(-$discount);
            $quote->setDiscountAmount($discount);
-           
+       }
        return $this;
    }
 }
