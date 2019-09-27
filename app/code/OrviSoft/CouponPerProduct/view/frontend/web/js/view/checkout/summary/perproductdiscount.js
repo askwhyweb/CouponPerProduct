@@ -13,7 +13,7 @@ define([
       return priceUtils.formatPrice(price, quote.getPriceFormat());
     },
     isDisplayedPerproductDiscount: function() {
-      return true;
+      return false;
     },
     getPerproductDiscountValue: function() {
       return "Anything";

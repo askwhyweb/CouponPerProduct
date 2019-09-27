@@ -61,7 +61,15 @@ class Data extends AbstractHelper
         $skus = $this->_checkoutSession->getPerProductSkus();
         $discount_type = $this->_checkoutSession->getPerProductDiscountType();
         $discount_amount = $this->_checkoutSession->getPerProductDiscountAmount();
-        return ['code' => $code, 'discount_type'=> $discount_type, 'discount_amount' => $discount_amount];
+        return ['code' => $code, 'discount_type'=> $discount_type, 'discount_amount' => $discount_amount, 'skus' => $skus];
+    }
+
+    public function unsetSessionValues(){
+        $code = $this->_checkoutSession->setPerProductCouponCode('');
+        $skus = $this->_checkoutSession->setPerProductSkus('');
+        $discount_type = $this->_checkoutSession->setPerProductDiscountType('');
+        $discount_amount = $this->_checkoutSession->setPerProductDiscountAmount('');
+        return true;
     }
 
     public function validateCoupon($coupon){
@@ -111,6 +119,6 @@ class Data extends AbstractHelper
         if(!$applycoupon){
             return false;
         }
-        return ['Code'=>$coupon, 'Discount_Type'=> ($percent ? 'Percentage' : 'Fixed'), 'DiscountAmount' => $discountAmount];
+        return ['Code'=>$coupon, 'Discount_Type'=> ($percent ? 'Percentage' : 'Fixed'), 'DiscountAmount' => $discountAmount, 'Skus' => implode(",",$applied_skus)];
     }
 }

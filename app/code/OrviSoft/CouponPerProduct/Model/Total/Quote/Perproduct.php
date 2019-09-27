@@ -39,13 +39,13 @@ class Perproduct extends \Magento\Quote\Model\Quote\Address\Total\AbstractTotal
        $applyDiscount = false;
        if(is_array($discount)){
             $coupon = $this->_helper->getCouponCode();
-            $validated = $this->helper->validateCoupon($coupon);
+            $validated = $this->_helper->validateCoupon($coupon);
             if(is_array($validated)){
                 $applyDiscount = true;
             }
        }
        if($applyDiscount){
-           $baseDiscount = $validated['discount_amount'];
+           $baseDiscount = $validated['DiscountAmount'];
            $discount =  $this->_priceCurrency->convert($baseDiscount);
            $total->addTotalAmount('perproductdiscount', -$discount);
            $total->addBaseTotalAmount('perproductdiscount', -$baseDiscount);

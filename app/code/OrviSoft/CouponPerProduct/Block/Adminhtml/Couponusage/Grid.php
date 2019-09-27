@@ -118,6 +118,14 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
 						'header' => __('Order Total'),
 						'index' => 'order_total',
 					]
+                );
+                
+                $this->addColumn(
+					'product_skus',
+					[
+						'header' => __('SKUs'),
+						'index' => 'product_skus',
+					]
 				);
 				
 				$this->addColumn(

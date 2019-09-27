@@ -84,6 +84,7 @@ class CouponPost extends \Magento\Checkout\Controller\Cart\CouponPost
         $this->_checkoutSession->setPerProductCouponCode($validateCoupon['Code']);
         $this->_checkoutSession->setPerProductDiscountType($validateCoupon['Discount_Type']);
         $this->_checkoutSession->setPerProductDiscountAmount($validateCoupon['DiscountAmount']);
+        $this->_checkoutSession->setPerProductSkus($validateCoupon['Skus']);
         return $this->_goBack();
 
     }
