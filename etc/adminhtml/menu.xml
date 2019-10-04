@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <!--<add id="Magento_Backend::marketing" title="Per Product Coupons" module="OrviSoft_CouponPerProduct" sortOrder="40" resource="Magento_Backend::marketing"/>-->
+		<add id="OrviSoft_CouponPerProduct::coupons" title="Per Product Coupons" module="OrviSoft_CouponPerProduct" sortOrder="31" parent="Magento_CatalogRule::promo" action="couponperproduct/coupons" resource="OrviSoft_CouponPerProduct::coupons"/>
+<add id="OrviSoft_CouponPerProduct::couponusage" title="Per Product Coupons usage" module="OrviSoft_CouponPerProduct" sortOrder="32" parent="Magento_CatalogRule::promo" action="couponperproduct/couponusage" resource="OrviSoft_CouponPerProduct::couponusage"/>
+    </menu>
+</config>

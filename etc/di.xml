@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<!--<preference for="\Magento\SalesRule\Model\Validator" type="\OrviSoft\CouponPerProduct\Rewrite\SalesRule\Model\Validator" />-->
+	<!--<preference for="Magento\Quote\Model\Quote\Address\Total\AbstractTotal" type="OrviSoft\CouponPerProduct\Model\Total\Quote\Perproduct" />-->
+   	<preference for="OrviSoft\CouponPerProduct\Api\DiscountpercouponManagementInterface" type="OrviSoft\CouponPerProduct\Model\DiscountpercouponManagement"/>
+	<preference for="Magento\Checkout\Controller\Cart\CouponPost" type="OrviSoft\CouponPerProduct\Rewrite\Magento\Checkout\Controller\Cart\CouponPost"/>
+</config>
